@@ -56,10 +56,9 @@
 .isResizing {
   background: red;
 }
-
 .navBar {
   display: flex;
-  justify-content: center; /* Align items to the center */
+  justify-content: center;
   align-items: center;
   background-color: #07002A;
   color: white;
@@ -70,14 +69,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;  /* Use absolute positioning to center nav items */
+  position: absolute;
   left: 50%;
-  transform: translateX(-50%); /* This centers the .navItems exactly */
+  transform: translateX(-50%);
 }
 
 .logo {
   position: absolute;
-  left: 10px; /* Adjust based on your preference */
+  left: 10px;
   display: flex;
   align-items: center;
 }
