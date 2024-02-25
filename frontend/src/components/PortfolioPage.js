@@ -460,16 +460,20 @@ const PortfolioPage = () => {
       )}
       
       {/* Navigation Bar */}
-      <div className={styles.navBar} onMouseLeave={handleMouseLeave}>
+      <div className={styles.navContainer} style={{ marginTop: '20px', display: 'flex', alignItems: 'center' }}>
         <div className={styles.logo}>
           <img src={newLogo} alt="Logo" style={{ width: 'auto', height: '50px' }} />
         </div>
-        <div className={styles.navItems}>
-          <button className={styles.navButton} onMouseEnter={handleMouseEnter}>Asset Managers</button>
-          <button className={styles.navButton}>Companies</button>
-          <button className={styles.navButton}>Public</button>
+        <div className={styles.navBar} onMouseLeave={handleMouseLeave}>
+          <div className={styles.navItems}>
+            <button className={styles.navButton} onMouseEnter={handleMouseEnter}>Asset Managers</button>
+            <button className={styles.navButton}>Companies</button>
+            <button className={styles.navButton}>Public</button>
+          </div>
         </div>
       </div>
+
+
       <div className={styles.tableWrapper}>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
           <div>
@@ -477,8 +481,8 @@ const PortfolioPage = () => {
             <div>Gross Return: </div>
           </div>
           <div>
-            <div>Currency: USD</div>
-            <div>Year: 2021</div>
+            <div><span style={{ fontWeight: 'bold' }}>Currency:</span> USD</div>
+            <div><span style={{ fontWeight: 'bold' }}>Year:</span> 2021</div>
           </div>
         </div>
         <div style={{ marginBottom: '10px' }}>
