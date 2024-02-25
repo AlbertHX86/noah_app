@@ -462,7 +462,7 @@ const PortfolioPage = () => {
       {/* Navigation Bar */}
       <div className={styles.navBar} onMouseLeave={handleMouseLeave}>
         <div className={styles.logo}>
-          <img src={newLogo} alt="Logo" style={{ width: 'auto', height: '50px' }} /> {/* Adjust width and height as needed */}
+          <img src={newLogo} alt="Logo" style={{ width: 'auto', height: '50px' }} />
         </div>
         <div className={styles.navItems}>
           <button className={styles.navButton} onMouseEnter={handleMouseEnter}>Asset Managers</button>
