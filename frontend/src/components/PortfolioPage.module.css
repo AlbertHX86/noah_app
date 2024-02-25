@@ -59,23 +59,27 @@
 
 .navBar {
   display: flex;
-  justify-content: center; /* Change this line to center the navigation bar */
+  justify-content: center; /* Align items to the center */
   align-items: center;
   background-color: #07002A;
   color: white;
-  padding: 10px 0; /* Adjust padding as needed */
+  padding: 10px 0;
 }
-
 
 .navItems {
   display: flex;
-  align-items: center; /* This ensures that items in the navItems are vertically centered */
-  justify-content: center; /* Add this to align your buttons in the middle */
+  justify-content: center;
+  align-items: center;
+  position: absolute;  /* Use absolute positioning to center nav items */
+  left: 50%;
+  transform: translateX(-50%); /* This centers the .navItems exactly */
 }
 
 .logo {
-  font-size: 24px;
-  font-weight: bold;
+  position: absolute;
+  left: 10px; /* Adjust based on your preference */
+  display: flex;
+  align-items: center;
 }
 
 
