@@ -4,7 +4,7 @@
   min-height: 100vh; /* Ensures the container fills at least the whole viewport height */
   background-color: #07002A;
   /*#07002A; */
-  color: #07002A;
+  color: #FFFFFF;
   position: relative; /* For positioning the upper frame absolutely relative to this container */
 }
   
