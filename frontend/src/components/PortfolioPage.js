@@ -451,7 +451,7 @@ const PortfolioPage = () => {
   } = tableInstance;
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style = {{margin:'20px}}>
       {showUpperFrame && (
         <div className={styles.upperFrame} onMouseLeave={handleMouseLeave}>
           <button className={styles.upperFrameButton}>Expectation</button>
