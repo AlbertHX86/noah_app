@@ -486,17 +486,20 @@ const PortfolioPage = () => {
           <button onClick={addCustomFormula} style={{ marginLeft: '10px' }}>Add Custom Score</button>
         </div>
         <div>
-          {Object.keys(columnVisibility).map((column, index) => (
-            <div key={index}>
-              <input
-                type="checkbox"
-                checked={columnVisibility[column]}
-                onChange={() => handleVisibilityChange(column)}
-              />
-              {column}
-            </div>
-          ))}
+          <div style={{ display: 'flex', flexDirection: 'row' }}>
+            {Object.keys(columnVisibility).map((column, index) => (
+              <div key={index} style={{ marginRight: '10px' }}>
+                <input
+                  type="checkbox"
+                  checked={columnVisibility[column]}
+                  onChange={() => handleVisibilityChange(column)}
+                />
+                {column}
+              </div>
+            ))}
+          </div>
         </div>
+
         <div style={{ marginBottom: '10px' }}>
           <label htmlFor="scaleSlider">Adjust Table Size:</label>
           <input
