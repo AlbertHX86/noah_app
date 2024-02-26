@@ -451,7 +451,7 @@ const PortfolioPage = () => {
   } = tableInstance;
 
   return (
-    <div className={styles.container} style = {{margin:'20px}}>
+    <div className={styles.container} >
       {showUpperFrame && (
         <div className={styles.upperFrame} onMouseLeave={handleMouseLeave}>
           <button className={styles.upperFrameButton}>Expectation</button>
@@ -466,9 +466,9 @@ const PortfolioPage = () => {
         </div>
         <div className={styles.navBar} onMouseLeave={handleMouseLeave}>
           <div className={styles.navItems}>
-            <button className={styles.navButton} onMouseEnter={handleMouseEnter}>Asset Managers</button>
-            <button className={styles.navButton}>Companies</button>
-            <button className={styles.navButton}>Public</button>
+            <button className={styles.navButton} onMouseEnter={handleMouseEnter}style={{ fontSize: '18px' }}>Asset Managers</button>
+            <button className={styles.navButton}style={{ fontSize: '18px' }}>Companies</button>
+            <button className={styles.navButton}style={{ fontSize: '18px' }}>Public</button>
           </div>
         </div>
       </div>
@@ -523,7 +523,7 @@ const PortfolioPage = () => {
         {headerGroups.map(headerGroup => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map(column => (
-              <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+              <th {...column.getHeaderProps(column.getSortByToggleProps())} style={{fontSize: '10px', fontWeight:'normal'}}>
                 {column.render('Header')}
                 {/* Add a span for sorting icons if needed */}
                 <span>
@@ -548,7 +548,7 @@ const PortfolioPage = () => {
               return (
                 <tr {...row.getRowProps()}>
                   {row.cells.map(cell => (
-                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                    <td {...cell.getCellProps()} style={{fontSize: '10px'}}>{cell.render('Cell')}</td>
                   ))}
                 </tr>
               );
