@@ -2,7 +2,7 @@
 
 .container {
   display: flex;
-  font-family: 'Inter', sans-serif;;
+  font-family: 'Poppin', sans-serif;;
   flex-direction: column;
   min-height: 100vh; /* Ensures the container fills at least the whole viewport height */
   background-color: #07002A;
@@ -60,12 +60,15 @@
   background: red;
 }
 .navBar {
+  height: 106px;
+  flex-shrink: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #07002A;
+  background: #07002A;
   color: white;
   padding: 10px 0;
+
 }
 
 .navItems {
@@ -81,43 +84,51 @@
   background: transparent;
   border: none;
   color: white;
-  margin-left: 30px;
-  cursor: pointer;
-}
-
-.logo {
-  position: absolute;
-  left: 10px;
-  display: flex;
-  align-items: center;
-}
-
-
-
-.navButton {
-  background: transparent;
-  border: none;
-  color: white;
   margin-left: 20px; /* Adjust the margin as needed */
   cursor: pointer;
   font-size: 24px; /* Adjust this value to change the font size of buttons */
+  color: #FFF;
+  text-align: center;
+  font-family: Arial;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px; /* 91.667% */
 }
+
+.logo {
+  display: flex;
+  width: 150px;
+  height: 37.5px;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #FFF;
+  text-align: center;
+  font-family: "Rock Salt", cursive;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px; /* 55% */
+}
+
 
 
 
 .upperFrame {
   position: absolute;
-  top: 60px; /* Adjust this value as needed to position it just under the navigation bar */
-  left: 0;
-  width: 100%; /* Make it full width */
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  padding: 10px;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: space-around;
+  top: 100px; /* Adjust this value to position it right below the asset manager button */
+  left: calc(50% - 70px); /* Position it to the right of the asset manager button */
+  transform: translateX(-50%); /* Move it left by half of its own width */
+  width: 300px; /* Adjust the width as needed */
+  background: #07002A;
+  padding: 24px 3px 20px 13px;
+  align-items: flex-start;
+  gap: 56px;
+  display: inline-flex;
   align-items: center;
-}
 
+}
 
 .upperFrameButton {
   background: transparent;
@@ -125,4 +136,38 @@
   color: #FFFFFF;
   margin-right: 20px;
   cursor: pointer;
+  text-align: center;
+  font-family: Arial;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px; /* 137.5% */
+
+}
+
+
+.tableWrapper {
+  max-height: 80vh; /* 或其他固定高度 */
+  overflow-y: auto;
+}
+
+/* 确保表格头部在滚动时保持在顶部 */
+.tableWrapper table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 10; /* 确保表头位于内容上方 */
+  background-color: #07002A; /* 保持与你的设计一致 */
+}
+
+/* 在表格的每个单元格中添加边框 */
+td, th {
+  border: 1px solid #ddd; /* 设置边框样式为灰色 */
+  padding: 8px; /* 设置单元格内边距 */
+}
+
+/* 设置表头的背景色和文字颜色 */
+th {
+  font-weight:300;
+  background-color: #07002A; /* 设置背景色为浅灰色 */
+  color: #FFFFFF; /* 设置文字颜色为黑色 */
 }
