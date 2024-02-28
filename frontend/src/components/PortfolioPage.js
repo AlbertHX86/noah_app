@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect,useRef } from 'react';
 import { useTable, useSortBy, useResizeColumns } from 'react-table';
 import { evaluate } from 'mathjs';
 import { mockCompanies } from '../data/mockData'; 
@@ -40,7 +40,17 @@ const PortfolioPage = () => {
   const [returnDeltas, setReturnDeltas] = useState([]);
   const [rowWeights, setRowWeights] = useState({});
   const [scale, setScale] = useState(1);
+  // State to manage the visibility of the upper frame
   const [showUpperFrame, setShowUpperFrame] = useState(false);
+
+  // Function to toggle the visibility
+  const toggleUpperFrame = () => {
+    setShowUpperFrame(!showUpperFrame);
+  };
+
+  // Refs for the upper frame and the button
+  const upperFrameRef = useRef(null);
+
 
   const handleMouseEnter = () => {
     setShowUpperFrame(true);
@@ -126,6 +136,24 @@ const PortfolioPage = () => {
   useEffect(() => {
     applyCustomFormulas();
   }, [customFormulas]);
+
+  const handleClickOutside = (event) => {
+    if (
+      upperFrameRef.current &&
+      !upperFrameRef.current.contains(event.target) &&
+      assetManagerButtonRef.current &&
+      !assetManagerButtonRef.current.contains(event.target)
+    ) {
+      setShowUpperFrame(false);
+    }
+  };
+
+  // Add when the component mounts
+  document.addEventListener('mousedown', handleClickOutside);
+  // Remove event listener on cleanup
+  return () => {
+    document.removeEventListener('mousedown', handleClickOutside);
+  };
   
 
   const CustomFormulaInput = ({ index, initialFormula, onFormulaChange, onRemove }) => {
@@ -216,7 +244,8 @@ const PortfolioPage = () => {
 
   
   
-
+    
+  const assetManagerButtonRef = useRef(null);
 
   const keyToHeaderMapping = {
     S1: 'Scope 1',
@@ -243,7 +272,7 @@ const PortfolioPage = () => {
 
   const columns = useMemo(() => [
     {
-      Header: 'Basic',
+      Header: 'Basic', 
       columns: [
         {
           Header: 'No',
@@ -451,7 +480,7 @@ const PortfolioPage = () => {
   } = tableInstance;
 
   return (
-    <div className={styles.container} >
+    <div className={styles.container} style={{ paddingLeft: '20px', paddingRight: '20px' }}>
       {showUpperFrame && (
         <div className={styles.upperFrame} onMouseLeave={handleMouseLeave}>
           <button className={styles.upperFrameButton}>Expectation</button>
@@ -462,16 +491,28 @@ const PortfolioPage = () => {
       {/* Navigation Bar */}
       <div className={styles.navContainer} style={{ marginTop: '20px', display: 'flex', alignItems: 'center' }}>
         <div className={styles.logo}>
-          <img src={newLogo} alt="Logo" style={{ width: 'auto', height: '50px' }} />
+          <img src={newLogo} alt="Logo" />
         </div>
-        <div className={styles.navBar} onMouseLeave={handleMouseLeave}>
+        <div className={styles.navBar}>
           <div className={styles.navItems}>
-            <button className={styles.navButton} onMouseEnter={handleMouseEnter}style={{ fontSize: '18px' }}>Asset Managers</button>
-            <button className={styles.navButton}style={{ fontSize: '18px' }}>Companies</button>
-            <button className={styles.navButton}style={{ fontSize: '18px' }}>Public</button>
+            <button
+              ref={assetManagerButtonRef}
+              className={styles.navButton}
+              onClick={() => setShowUpperFrame(!showUpperFrame)} // Toggle the display of the upper frame
+              style={{ fontSize: '18px' }}
+            >
+              Asset Managers
+            </button>
+            <button className={styles.navButton} style={{ fontSize: '18px' }}>
+              Companies
+            </button>
+            <button className={styles.navButton} style={{ fontSize: '18px' }}>
+              Public
+            </button>
           </div>
         </div>
       </div>
+
 
 
       <div className={styles.tableWrapper}>
